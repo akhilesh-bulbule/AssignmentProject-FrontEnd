@@ -13,7 +13,7 @@ export class ItemService {
   constructor( private _http: HttpClient ) { }
 
   getItemList() : Observable<ItemModule.IItemModel[]>{
-    let endpointUrl = this.baseUrl + '/Users';
+    let endpointUrl = this.baseUrl + '/Items';
     
     let response = this._http.get<ItemModule.IItemModel[]>(endpointUrl)
             .pipe(map((res: ItemModule.IItemModel[]) => {
@@ -25,7 +25,7 @@ export class ItemService {
   }
 
   deleteItem(itemId : number){
-      let endpointUrl = this.baseUrl + '/Users/'+ itemId;
+      let endpointUrl = this.baseUrl + '/Items/'+ itemId;
       
       return this._http.delete(endpointUrl)
       .pipe(map(res => {
@@ -34,7 +34,7 @@ export class ItemService {
   }
 
 updateItem(inputItem :Item){
-  let endpointUrl = this.baseUrl + '/Users/'+ inputItem.ItemId;
+  let endpointUrl = this.baseUrl + '/Items/'+ inputItem.ItemId;
       
   const content_ = JSON.stringify(inputItem);
 
@@ -54,7 +54,7 @@ updateItem(inputItem :Item){
 }
 
 addItem(inputItem :Item){
-  let endpointUrl = this.baseUrl + '/Users';
+  let endpointUrl = this.baseUrl + '/Items';
       
   const content_ = JSON.stringify(inputItem);
 

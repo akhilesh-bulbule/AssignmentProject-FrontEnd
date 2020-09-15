@@ -16,7 +16,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 export class ItemListComponent implements OnInit {
  
   itemList : ItemModule.IItemModel[] = [];
-  tableColumns: string[] = ['ItemName', 'Description', 'Price'];
+  tableColumns: string[] = ['ItemName', 'Description', 'Price', 'ItemIdForEdit','ItemIdForDelete'];
   resultsLength = 0;
   loading: boolean = false;
   @ViewChild(MatSort) sort: MatSort;
@@ -45,36 +45,11 @@ export class ItemListComponent implements OnInit {
     return promise;
 }
 
-deleteUser(itemId : number){
+deleteItem(itemId : number){
   this._itemService.deleteItem(itemId).subscribe(res => {
-    this.getItems();
+    this.getItemList();
   });
 
 }
 
 }
-
-
-// <p-table #dt [scrollable]="true" [rows]="10" scrollHeight="270px" [virtualRowHeight]="30" [loading]="loading"
-//     [virtualScroll]="true" [value]="itemList"> <!--   [totalRecords]="totalRecords" -->
-//   <ng-template pTemplate="caption">
-//     </ng-template>
-//     <ng-template pTemplate="header">
-//         <tr class="text-center">
-//             <th pSortableColumn="name">Item Name <p-sortIcon field="name"></p-sortIcon></th>
-//             <th>Description</th>
-//             <th>Price</th>
-//             <th></th>
-//             <th></th>
-//         </tr>
-//     </ng-template>
-//     <ng-template pTemplate="body" let-userList>
-//         <tr class="text-center">
-//             <td>{{userList.UserName}}</td>
-//             <td>{{userList.Email}}</td>
-//             <td>{{userList.Designation}}</td>
-//             <td><i class="far fa-edit" (click)="userModal.show(userList)"style="cursor:pointer;"></i></td>
-//             <td><i class="far fa-trash" (click)="deleteUser (userList.UserId)" style="cursor:pointer;"></i></td>
-//         </tr>
-//     </ng-template>
-// </p-table>
