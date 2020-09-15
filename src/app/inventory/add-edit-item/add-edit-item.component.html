@@ -1,0 +1,33 @@
+<div appBsModal #userModal="bs-modal" (onShown)="onShown()" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form *ngIf="active" #itemForm="ngForm" (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span *ngIf="!isItemDataPresent">Add Item</span>
+                        <span *ngIf="isItemDataPresent">Edit Item</span>
+                    </h5>
+                    <button type="button" class="close" (click)="close()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input id="ItemName" type="text" name="ItemName" class="form-control" placeholder=" Enter Item Name" required [(ngModel)]="currentItem.ItemName">
+                    </div>
+                    <div class="form-group">
+                        <input id="Description" type="text" name="Description" class="form-control" placeholder="Enter Item Description" required [(ngModel)]="currentItem.Description"> 
+                    </div>
+                    <div class="form-group">
+                        <input id="Price" type="text" name="Price" [(ngModel)]="currentItem.Price" class="form-control" placeholder="Enter Item Price">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="close()" [disabled]="saving">Cancel</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!itemForm.form.valid || saving" *ngIf="!isItemDataPresent"><span>Add Item</span></button>
+                    <button type="submit" class="btn btn-primary" *ngIf="isItemDataPresent"><span>Update Item</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
