@@ -1,0 +1,11 @@
+System Requirements to run the current project
+1. Npm installed in your machine
+2. Visual Studio 2019 Community Edition / Visual Studio code 
+
+Process to run the current project:
+1. Clone the current project in a folder where you have cloned the back-end project. 
+(Note: )
+2. Navigate till the current project by using command prompt. 
+3. Run the command "npm install" to install the 3rd parties packages, in the same command prompt. 
+4. Run the command "npm start" , in the same command prompt.
+5. go to the broswer, enter the localhost:4200 so as to ru the angular app in the browser.
